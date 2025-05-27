@@ -16,6 +16,11 @@ jobs:
           php-version: '7.4'
           coverage: xdebug     
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+        node-version: '20'  # or '18.20.0' minimum
+
       - name: NPM install
         if: steps.node_modules-cache.outputs.cache-hit != 'true'
         run: npm install
