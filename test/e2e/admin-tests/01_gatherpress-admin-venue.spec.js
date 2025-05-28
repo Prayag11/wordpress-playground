@@ -9,14 +9,14 @@ test.describe.skip('e2e test for venue map through admin side', () => {
 	});
 
 	test.skip('Test to create a new venue for an offline event and verify the entered location map should be visible on the venue post.', async ({
-		page,
+		page
 	}) => {
 		await login({ page });
 
 		const postName = 'venue pune';
 
 		await page.goto(
-			'/wp-admin/post-new.php?post_type=gatherpress_venue'
+			'/wp-admin/post-new.php?post_type=gatherpress_event'
 		);
 
 		await page.getByLabel('Add title').fill(postName);
