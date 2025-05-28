@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"."
+		
 	],
 	"themes": [
 		"WordPress/twentytwentyfive"
