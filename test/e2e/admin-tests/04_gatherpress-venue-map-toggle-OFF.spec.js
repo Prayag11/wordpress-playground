@@ -4,17 +4,18 @@ const { login } = require('../reusable-user-steps/common.js');
 test.describe.skip('e2e test for venue map through admin side', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.waitForLoadState('networkidle');
+		await page.goto('/wp-admin')
 	});
 
 	test.skip('Verify the venue location map should not be visible on the events when the map toggled is disabled.', async ({
 		page,
 	}) => {
-		// await login({ page });
+		await login({ page });
 
 		const postName = 'offline test venue - no map is visible';
 
 		await page.goto(
-			'http://localhost:8881/wp-admin/post-new.php?post_type=gatherpress_venue'
+			'/wp-admin/post-new.php?post_type=gatherpress_venue'
 		);
 
 		await page.getByLabel('Add title').fill(postName);

@@ -6,19 +6,19 @@ test.describe.skip(
 	() => {
 		test.beforeEach(async ({ page }) => {
 			test.setTimeout(12000);
-
+			await page.goto('/wp-admin')
 			await page.waitForLoadState('networkidle');
 		});
 
 		test.skip('Test to create a new offline event and verify the entered location map should be visible on the event post.', async ({
 			page,
 		}) => {
-			// await login({ page });
+			await login({ page });
 
 			const postName = 'offline event-pune location';
 
 			await page.goto(
-				'http://localhost:8881/wp-admin/post-new.php?post_type=gatherpress_event'
+				'/wp-admin/post-new.php?post_type=gatherpress_event'
 			);
 
 			await page.getByLabel('Add title').fill(postName);

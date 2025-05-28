@@ -4,17 +4,19 @@ const { login } = require('../reusable-user-steps/common.js');
 test.describe.skip('e2e test for publish event through admin side', () => {
 	test.beforeEach(async ({ page }) => {
 		test.setTimeout(120000);
-
+		await page.goto('/wp-admin')
 		await page.waitForLoadState('networkidle');
 	});
 
 	test.skip('the user should be able to publish an online event', async ({
 		page,
 	}) => {
+
+		await login({ page });
 		const postName = 'online event test';
 
 		await page.goto(
-			'http://localhost:8881/wp-admin/post-new.php?post_type=gatherpress_event'
+			'/wp-admin/post-new.php?post_type=gatherpress_event'
 		);
 
 		await page.getByLabel('Add title').fill(postName);

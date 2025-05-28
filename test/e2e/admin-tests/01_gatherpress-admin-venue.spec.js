@@ -4,18 +4,19 @@ const { login } = require('../reusable-user-steps/common.js');
 test.describe('e2e test for venue map through admin side', () => {
 	test.beforeEach(async ({ page }) => {
 		test.setTimeout(120000);
+		await page.goto('/wp-admin')
 		await page.waitForLoadState('networkidle');
 	});
 
 	test('Test to create a new venue for an offline event and verify the entered location map should be visible on the venue post.', async ({
 		page,
 	}) => {
-		// await login({ page });
+		await login({ page });
 
 		const postName = 'venue pune';
 
 		await page.goto(
-			'http://localhost:8881/wp-admin/post-new.php?post_type=gatherpress_venue'
+			'/wp-admin/post-new.php?post_type=gatherpress_venue'
 		);
 
 		await page.getByLabel('Add title').fill(postName);
@@ -62,6 +63,11 @@ test.describe('e2e test for venue map through admin side', () => {
 			.getByLabel('Editor publish')
 			.getByRole('button', { name: 'Publish', exact: true })
 			.click();
+
+		await page
+			.getByLabel('Editor publish')
+			.getByRole('link', { name: 'View Venue' })
+			.isVisible({timeout:50000});
 
 		await page
 			.getByLabel('Editor publish')

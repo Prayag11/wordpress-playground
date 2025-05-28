@@ -6,17 +6,18 @@ test.describe.skip(
 	() => {
 		test.beforeEach(async ({ page }) => {
 			await page.waitForLoadState('networkidle');
+			await page.goto('/wp-admin')
 		});
 
 		test.skip('Verify the event post; event details and timezone should be visible on the front end', async ({
 			page,
 		}) => {
-			// await login({ page });
+			await login({ page });
 
 			const postName = 'event details test';
 
 			await page.goto(
-				'http://localhost:8881/wp-admin/post-new.php?post_type=gatherpress_event'
+				'/wp-admin/post-new.php?post_type=gatherpress_event'
 			);
 
 			await page.getByLabel('Add title').fill(postName);
