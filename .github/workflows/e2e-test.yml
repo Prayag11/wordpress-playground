@@ -37,8 +37,6 @@ jobs:
           wp-env start
           npx wait-on http://localhost:8889 -t 60000
           
-      - name: build project
-        run: npm run build
 
       - name: Run Playwright Tests
         env:
