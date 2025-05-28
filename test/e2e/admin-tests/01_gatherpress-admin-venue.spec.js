@@ -65,9 +65,13 @@ test.describe('e2e test for venue map through admin side', () => {
 			.click();
 
 		await page
+			.getByText(`${postName} is now live.`)
+			.isVisible({ timeout: 60000 }); // verified the event is live.
+		
+		await page
 			.getByLabel('Editor publish')
 			.getByRole('link', { name: 'View Venue' })
-			.isVisible({timeout:50000});
+			.isVisible({ timeout: 50000 });
 
 		await page
 			.getByLabel('Editor publish')

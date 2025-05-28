@@ -4,7 +4,7 @@ const { login } = require('../reusable-user-steps/common.js');
 test.describe('e2e test for venue map through admin side', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.waitForLoadState('networkidle');
-		await page.goto('/wp-admin')
+		await page.goto('/wp-admin/')
 	});
 
 	test('Test to create a new venue for an offline event and verify the entered location map should be visible on the venue post.', async ({
