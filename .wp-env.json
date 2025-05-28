@@ -1,5 +1,7 @@
 {
-	"plugins": [ "./wordpress-playground" ],
+	"plugins": [
+		"."
+	],
 	"themes": [
 		"WordPress/twentytwentyfive"
 	],
