@@ -31,23 +31,12 @@ jobs:
       - name: Install @wordpress/env
         run: npm install -g @wordpress/env
     
-      - name: Install WP-CLI
-        run: |
-          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-          chmod +x wp-cli.phar
-          sudo mv wp-cli.phar /usr/local/bin/wp
-          wp --info
-
+    
       - name: Start WordPress
         run: |
           # Start test environment
           wp-env start
           npx wait-on http://localhost:8889 -t 60000
-      
-      - name: Install GatherPress
-        run: |
-          git clone https://github.com/GatherPress/gatherpress.git wp-content/plugins/gatherpress
-          wp plugin activate gatherpress
 
       - name: Run Playwright Tests
         env:
