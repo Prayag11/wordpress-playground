@@ -36,7 +36,10 @@ jobs:
           # Start test environment
           wp-env start
           npx wait-on http://localhost:8889 -t 60000
-          
+
+      - name: Install GatherPress from GitHub
+        run: npx wp-env run cli -- wp plugin install https://github.com/gatherpress/gatherpress/archive/refs/heads/main.zip --activate
+    
 
       - name: Run Playwright Tests
         env:
