@@ -1,6 +1,6 @@
 {
 	"plugins": [
-		"plugins/gatherpress"
+		"plugins/gatherpress/gatherpress.php"
 	],
 	"themes": [
 		"WordPress/twentytwentyfive"
