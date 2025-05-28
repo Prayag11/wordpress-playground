@@ -4,7 +4,7 @@ const { login } = require('../reusable-user-steps/common.js');
 test.describe.skip('e2e test for venue map through admin side', () => {
 	test.beforeEach(async ({ page }) => {
 		test.setTimeout(120000);
-		await page.goto('/wp-admin')
+		await page.goto('/wp-admin/')
 		await page.waitForLoadState('networkidle');
 	});
 
@@ -65,9 +65,13 @@ test.describe.skip('e2e test for venue map through admin side', () => {
 			.click();
 
 		await page
+			.getByText(`${postName} is now live.`)
+			.isVisible({ timeout: 60000 }); // verified the event is live.
+		
+		await page
 			.getByLabel('Editor publish')
 			.getByRole('link', { name: 'View Venue' })
-			.isVisible({timeout:50000});
+			.isVisible({ timeout: 50000 });
 
 		await page
 			.getByLabel('Editor publish')
