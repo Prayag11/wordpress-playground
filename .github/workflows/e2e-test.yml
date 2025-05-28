@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WP_BASE_URL: 'http://localhost:8889'
           PLAYWRIGHT_DEBUG: '1'
-        run: npm run test:e2e --wordpress-playground/test/e2e/admin-tests/
+        run: npm run test:e2e 
 
       - name: Upload test results
         if: always()
