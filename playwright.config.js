@@ -28,5 +28,5 @@ module.exports = defineConfig({
 		},
 	],
 	outputDir: './test-results/',
-	snapshotDir: './artifacts',
+	
 });
