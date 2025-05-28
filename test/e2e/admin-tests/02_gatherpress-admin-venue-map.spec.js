@@ -1,13 +1,13 @@
 const { test, expect } = require('@playwright/test');
 const { login } = require('../reusable-user-steps/common.js');
 
-test.describe.skip('e2e test for venue map through admin side', () => {
+test.describe('e2e test for venue map through admin side', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.waitForLoadState('networkidle');
 		await page.goto('/wp-admin')
 	});
 
-	test.skip('Test to create a new venue for an offline event and verify the entered location map should be visible on the venue post.', async ({
+	test('Test to create a new venue for an offline event and verify the entered location map should be visible on the venue post.', async ({
 		page,
 	}) => {
 		await login({ page });
