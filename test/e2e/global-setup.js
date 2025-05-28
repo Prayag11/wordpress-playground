@@ -17,7 +17,7 @@ async function globalSetup() {
 	const page = await browser.newPage();
 
 	try {
-		await page.goto('http://localhost:8881/wp-login.php');
+		await page.goto('http://localhost:8889/wp-login.php');
 		await page.fill('#user_login', 'admin');
 		await page.fill('#user_pass', 'password');
 		await page.click('#wp-submit');
