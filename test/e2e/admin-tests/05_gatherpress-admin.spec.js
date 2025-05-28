@@ -3,15 +3,16 @@ const { login } = require('../reusable-user-steps/common.js');
 
 test.describe('As admin login into GatherPress', () => {
 	test.beforeEach(async ({ page }) => {
+		await page.goto('/wp-admin')
 		test.setTimeout(180000);
 	});
 
 	test('Navigate to Events Add New page', async ({ page }) => {
-		// await login({ page });
+		await login({ page });
 
 		// Go directly to the Add New page.
 		await page.goto(
-			'http://localhost:8881/wp-admin/post-new.php?post_type=gatherpress_event'
+			'/wp-admin/post-new.php?post_type=gatherpress_event'
 		);
 
 		// Take screenshot.
